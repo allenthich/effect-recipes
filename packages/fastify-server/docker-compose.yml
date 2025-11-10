@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  postgres:
+    container_name: fastify-server-postgres
+    image: postgres:16-alpine
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - fastify-network
+
+volumes:
+  postgres_data:
+    driver: local
+  fastify_data:
+    driver: local
+
+networks:
+  fastify-network:
+    driver: bridge
