@@ -149,9 +149,6 @@ export class FastifyApp extends Effect.Service<FastifyApp>()(
 								Effect.withSpan(`Fastify.route(${method}, ${path})`),
 								// Handle cases where the response has not been sent
 								Effect.onExit((exit) => {
-									if (!reply.sent) {
-										reply.status(Exit.isSuccess(exit) ? 204 : 500).send();
-									}
 									// Log any unhandled errors excluding interruptions
 									if (
 										Exit.isFailure(exit) &&
