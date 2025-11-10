@@ -1,0 +1,11 @@
+{
+	"name": "effect-recipes-root",
+	"private": true,
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"dependencies": {
+		"effect": "^3.19.3"
+	}
+}

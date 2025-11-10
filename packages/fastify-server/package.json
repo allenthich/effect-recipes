@@ -1,0 +1,21 @@
+{
+  "name": "fastify-server",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@effect/language-service": "^0.44.0",
+    "@types/bun": "latest",
+    "pino-pretty": "^13.1.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@effect/platform-bun": "^0.81.1",
+    "@effect/platform-node": "^0.98.4",
+    "@fastify/type-provider-json-schema-to-ts": "^5.0.0",
+    "fastify": "^5.6.1",
+    "fastify-plugin": "^5.1.0"
+  }
+}
