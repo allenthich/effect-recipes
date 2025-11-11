@@ -27,6 +27,10 @@
     "db:migrate": "turbo -F @effect-recipes/db db:migrate"
   },
   "dependencies": {
+    "@effect/platform": "^0.93.0",
+    "@effect/platform-bun": "^0.83.0",
+    "@effect/rpc": "^0.72.1",
+    "@effect/rpc-http": "^0.52.4",
     "dotenv": "^17.2.2",
     "effect": "^3.19.3",
     "zod": "^4.1.11"

@@ -6,15 +6,23 @@
     "build": "tsdown",
     "check-types": "tsc -b",
     "compile": "bun build --compile --minify --sourcemap --bytecode ./src/index.ts --outfile server",
-    "dev": "bun run --hot src/index.ts",
-    "start": "bun run dist/index.js"
+    "dev": "bun run --hot ./src/index.ts",
+    "dev:rpc": "bun run --hot ./src/rpc-index.ts",
+    "start": "bun run ./dist/index.js"
   },
   "dependencies": {
-    "fastify": "^5.3.3",
+    "@effect-recipes/db": "workspace:*",
+    "@effect-recipes/rpc": "workspace:*",
+    "@effect/cluster": "^0.52.8",
+    "@effect/platform": "^0.93.0",
+    "@effect/platform-bun": "^0.83.0",
+    "@effect/rpc": "^0.72.1",
+    "@effect/rpc-http": "^0.52.4",
     "@fastify/cors": "^11.0.1",
     "dotenv": "catalog:",
-    "zod": "catalog:",
-    "@effect-recipes/db": "workspace:*"
+    "effect": "^3.19.3",
+    "fastify": "^5.3.3",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "typescript": "catalog:",
