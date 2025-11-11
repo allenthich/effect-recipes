@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "pnpm run --color --parallel /^dev:/",
+    "dev": "bun run dev:db & bun run dev:server",
     "dev:server": "bun --watch ./src/index.ts",
     "dev:db": "docker compose up",
     "db:pregenerate": "npx @better-auth/cli generate --config=./src/services/authentication/auth.ts --output=./src/services/authentication/auth-schema.ts",
