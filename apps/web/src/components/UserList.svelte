@@ -17,14 +17,13 @@
     error = null;
 
     try {
+      console.log("loadUsers..");
       const result = await Effect.runPromise(
         Effect.gen(function* () {
           const client = yield* UsersClient;
           const userStream = yield* Stream.runCollect(client.UserList());
           return userStream;
-        })
-          .pipe(Effect.provide(UsersClient.Default))
-          .pipe(Effect.scoped)
+        }).pipe(Effect.provide(UsersClient.Default))
       );
       users = Array.from(result);
     } catch (e) {

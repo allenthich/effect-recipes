@@ -1,5 +1,5 @@
 <script lang="ts">
-  import UserList from '$components/UserList.svelte'
+  import UserList from "$components/UserList.svelte";
 
   const TITLE_TEXT = `
    ██████╗ ███████╗████████╗████████╗███████╗██████╗
@@ -19,8 +19,8 @@
 </script>
 
 <div class="container mx-auto max-w-3xl px-4 py-2">
-	<pre class="overflow-x-auto font-mono text-sm">{TITLE_TEXT}</pre>
-	<div class="grid gap-6">
+  <pre class="overflow-x-auto font-mono text-sm">{TITLE_TEXT}</pre>
+  <div class="grid gap-6">
     <UserList />
-	</div>
+  </div>
 </div>
