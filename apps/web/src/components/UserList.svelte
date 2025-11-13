@@ -25,7 +25,7 @@
           /**
            * Example: Error handling from RPC contract
            */
-          const foundUser = yield* client.UserById({ id: "1111" }).pipe(
+          const foundUser = client.UserById({ id: "1111" }).pipe(
             Effect.catchTag("UserNotFoundError", (error) => {
               // Log error
               console.log("UserNotFoundError");
