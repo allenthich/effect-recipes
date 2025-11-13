@@ -21,6 +21,18 @@
       const result = await Effect.runPromise(
         Effect.gen(function* () {
           const client = yield* UsersClient;
+
+          /**
+           * Example: Error handling from RPC contract
+           */
+          const foundUser = yield* client.UserById({ id: "1111" }).pipe(
+            Effect.catchTag("UserNotFoundError", (error) => {
+              // Log error
+              console.log("UserNotFoundError");
+              return Effect.succeed("Recovering from UserNotFoundError");
+            })
+          );
+
           const userStream = yield* Stream.runCollect(client.UserList());
           return userStream;
         }).pipe(Effect.provide(UsersClient.Default))

@@ -1,6 +1,6 @@
 import type { Rpc } from "@effect/rpc";
 import { Effect, Layer, Ref, Stream } from "effect";
-import { User, UserRpcs } from "@effect-recipes/rpc";
+import { User, UserNotFoundError, UserRpcs } from "@effect-recipes/rpc";
 
 // ---------------------------------------------
 // User Repository (In-Memory Database)
@@ -23,7 +23,9 @@ class UserRepository extends Effect.Service<UserRepository>()(
 							const user = users.find((user) => user.id === id);
 							return user
 								? Effect.succeed(user)
-								: Effect.fail(`User not found: ${id}`);
+								: Effect.fail(
+										new UserNotFoundError({ message: `User not found: ${id}` }),
+									);
 						}),
 					),
 				create: (name: string, email: string) => {

@@ -1,6 +1,20 @@
 import { Rpc, RpcGroup } from "@effect/rpc";
 import { Schema } from "effect";
 
+export class UserNotFoundError extends Schema.TaggedError<UserNotFoundError>()(
+	"UserNotFoundError",
+	{
+		message: Schema.String,
+	},
+) {}
+
+export class InvalidUserIdError extends Schema.TaggedError<InvalidUserIdError>()(
+	"InvalidUserIdError",
+	{
+		message: Schema.String,
+	},
+) {}
+
 // Define a user with an ID and name
 export class User extends Schema.Class<User>("User")({
 	id: Schema.String,
@@ -26,7 +40,7 @@ export class UserRpcs extends RpcGroup.make(
 	// Request to retrieve a user by ID
 	Rpc.make("UserById", {
 		success: User,
-		error: Schema.String,
+		error: Schema.Union(UserNotFoundError, InvalidUserIdError),
 		payload: {
 			id: Schema.String,
 		},
